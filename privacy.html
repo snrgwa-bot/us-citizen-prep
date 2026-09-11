@@ -17,7 +17,12 @@
     .muted { opacity: .7; font-size: .95rem; }
     .box { background: #e7edf7; border-radius: 12px; padding: 16px 20px; margin: 24px 0; }
     ul { padding-left: 22px; }
-  </style>
+  
+    /* Large displays: scale the root font size so this page is not tiny on a
+       2560px monitor. The prose column keeps its 760px reading measure. */
+    @media (min-width: 1500px) { :root { font-size: 17.5px; } }
+    @media (min-width: 2000px) { :root { font-size: 19px; } }
+</style>
 </head>
 <body>
   <div class="wrap">
