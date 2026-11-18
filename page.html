@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>US Naturalization Prep 2027: study for the civics test</title>
+<meta name="description" content="Study for the USCIS naturalization civics test on your iPhone: all 128 official questions, a real-format exam, an out-loud interview, 8 languages and your state's current officials.">
+<meta property="og:title" content="US Naturalization Prep 2027">
+<meta property="og:description" content="All 128 official civics questions, a real-format exam, an out-loud interview and your state's current officials.">
+<meta property="og:image" content="https://snrgwa-bot.github.io/us-citizen-prep/img/app-home.jpg">
+<meta name="apple-itunes-app" content="app-id=6766182846">
+<meta name="theme-color" content="#EEF1F8">
+<link rel="icon" href="img/icon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* The app's own design system: same palette, font and glass as the iPhone app. */
+:root {
+  --bg: #EEF1F8; --ink: #0F172A; --dim: #5B6478; --faint: #5B6478;
+  --accent: #3D5CFF; --accent-2: #6B4DFF; --coral: #E8335A; --green: #12915D;
+  --glass: rgba(255, 255, 255, .62); --glass-edge: rgba(255, 255, 255, .9);
+  --shadow: 0 24px 60px -28px rgba(15, 23, 42, .28);
+  --grad: linear-gradient(135deg, #3D5CFF, #6B4DFF);
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --w: min(1160px, 100% - 40px);
+}
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+main { overflow-x: clip; }
+body { background: var(--bg); color: var(--ink); font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif; font-size: 1.0625rem; line-height: 1.55; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; text-wrap: balance; }
+h2 { font-size: clamp(2rem, 1.2rem + 3vw, 3.25rem); }
+h3 { font-size: clamp(1.6rem, 1.1rem + 1.8vw, 2.4rem); }
+p { text-wrap: pretty; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+::selection { background: var(--accent); color: #fff; }
+.wrap { width: var(--w); margin-inline: auto; }
+.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lede { color: var(--dim); font-size: clamp(1.0625rem, 1rem + .4vw, 1.25rem); font-weight: 500; max-width: 46ch; }
+.center { text-align: center; } .center .lede { margin-inline: auto; }
+.mt { margin-top: 16px; }
+
+/* the living backdrop: three soft colour fields that drift, as in the app */
+.backdrop { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.backdrop i { position: absolute; width: 60vmax; height: 60vmax; border-radius: 50%; filter: blur(110px); opacity: .5; animation: drift 26s ease-in-out infinite alternate; }
+.backdrop i:nth-child(1) { background: #5B7CFF; top: -22vmax; left: -18vmax; }
+.backdrop i:nth-child(2) { background: #FF5A7A; top: 18vh; right: -30vmax; animation-duration: 32s; animation-delay: -8s; }
+.backdrop i:nth-child(3) { background: #38D6C9; bottom: -30vmax; left: 8vw; animation-duration: 38s; animation-delay: -15s; }
+@keyframes drift { to { transform: translate3d(6vmax, 4vmax, 0) scale(1.12); } }
+
+.glass { background: var(--glass); border: 1px solid var(--glass-edge); border-radius: 30px; box-shadow: var(--shadow); -webkit-backdrop-filter: blur(22px) saturate(1.4); backdrop-filter: blur(22px) saturate(1.4); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 999px; background: var(--grad); color: #fff; font: inherit; font-weight: 700; text-decoration: none; border: 1px solid rgba(255, 255, 255, .28); box-shadow: 0 12px 28px -10px rgba(61, 92, 255, .6); cursor: pointer; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 20px 36px -12px rgba(61, 92, 255, .7); }
+.btn:active { transform: translateY(0) scale(.97); }
+.btn svg { width: 20px; height: 20px; }
+.btn--quiet { background: var(--glass); color: var(--accent); border-color: var(--glass-edge); box-shadow: var(--shadow); }
+.chip { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; font-size: .8125rem; font-weight: 800; color: #fff; background: linear-gradient(135deg, var(--a, #3D5CFF), var(--b, #6B4DFF)); margin-bottom: 16px; }
+
+/* scroll entrances: hidden only while the script runs */
+.js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: calc(var(--d, 0) * 90ms); }
+.js .reveal.in { opacity: 1; transform: none; }
+
+/* navigation: the app's floating glass bar */
+.nav { position: sticky; top: 12px; z-index: 10; width: var(--w); margin: 12px auto 0; display: flex; align-items: center; gap: 6px; padding: 8px 8px 8px 14px; border-radius: 999px; }
+.nav__mark { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.02em; text-decoration: none; margin-right: auto; }
+.nav__mark img { width: 36px; height: 36px; border-radius: 10px; }
+.nav a.link { text-decoration: none; font-size: .9375rem; font-weight: 600; color: var(--dim); padding: 10px 14px; border-radius: 999px; transition: background-color .2s, color .2s; }
+.nav a.link:hover { background: rgba(61, 92, 255, .1); color: var(--accent); }
+.nav .btn { min-height: 44px; padding: 0 20px; font-size: .9375rem; }
+@media (max-width: 860px) { .nav a.link { display: none; } .nav__mark span { font-size: .9375rem; } }
+
+/* phones */
+.phone { background: #12141C; border-radius: 13.5% / 6.4%; padding: 3.2%; box-shadow: 0 50px 80px -40px rgba(15, 23, 42, .55), 0 0 0 1px rgba(255, 255, 255, .12) inset; }
+.phone img { width: 100%; border-radius: 10.6% / 4.9%; }
+
+/* hero */
+.hero { display: grid; grid-template-columns: 1.02fr 1fr; align-items: center; gap: 24px; padding: clamp(40px, 7vw, 96px) 0 40px; }
+.hero h1 { font-size: clamp(4rem, 2rem + 8vw, 8.5rem); line-height: .95; }
+.hero h1 span { display: block; }
+.hero h1 span:first-child { font-size: .3em; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; color: #334155; margin-bottom: .1em; }
+.hero .lede { margin: 22px 0 30px; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.pill { display: inline-flex; padding: 8px 16px; border-radius: 999px; font-size: .875rem; font-weight: 700; margin-bottom: 22px; }
+.hero__phones { position: relative; height: clamp(440px, 52vw, 680px); }
+.hero__phones .phone { position: absolute; top: 50%; left: 50%; width: 44%; }
+.hero__phones .p1 { z-index: 3; transform: translate(-50%, -50%); animation: float 7s ease-in-out infinite alternate; }
+.hero__phones .p2 { z-index: 1; width: 38%; transform: translate(-128%, -46%) rotate(-9deg); animation: float2 8s ease-in-out infinite alternate; }
+.hero__phones .p3 { z-index: 2; width: 38%; transform: translate(28%, -44%) rotate(9deg); animation: float3 9s ease-in-out infinite alternate; }
+@keyframes float { to { transform: translate(-50%, -53%); } }
+@keyframes float2 { to { transform: translate(-128%, -42%) rotate(-7deg); } }
+@keyframes float3 { to { transform: translate(28%, -48%) rotate(7deg); } }
+
+/* numbers */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 24px; }
+.stat { padding: 24px 22px; }
+.stat b { display: block; font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+.stat span { display: block; margin-top: 8px; color: var(--dim); font-weight: 600; font-size: .9375rem; }
+
+section { margin-top: clamp(96px, 12vw, 170px); }
+
+/* live card */
+.try { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
+.live { padding: clamp(22px, 3vw, 34px); display: grid; gap: 16px; }
+.live__from { display: flex; align-items: center; gap: 10px; color: var(--dim); font-weight: 700; font-size: .875rem; }
+.live__from i { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #0F172A, #334155); display: grid; place-items: center; }
+.live__from svg { width: 16px; height: 16px; fill: #fff; }
+.live__q { font-size: clamp(1.35rem, 1.1rem + 1vw, 1.75rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
+.live label { font-size: .875rem; font-weight: 600; color: var(--dim); }
+.live select { width: 100%; min-height: 54px; padding: 0 18px; font: inherit; font-weight: 700; color: var(--ink); background: rgba(255, 255, 255, .8); border: 1px solid var(--glass-edge); border-radius: 18px; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233D5CFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 18px; }
+.answer { display: grid; gap: 10px; }
+.answer div { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 18px; border-radius: 18px; background: rgba(255, 255, 255, .7); border: 1px solid var(--glass-edge); }
+.answer dt { color: var(--dim); font-weight: 600; font-size: .875rem; }
+.answer dd { font-weight: 800; text-align: right; transition: opacity .25s, transform .25s var(--ease); }
+.live.swap dd { opacity: 0; transform: translateY(6px); }
+.live__note { font-size: .8125rem; color: var(--faint); font-weight: 600; }
+
+/* features: one big phone each */
+.feats { display: grid; gap: clamp(72px, 10vw, 140px); margin-top: clamp(56px, 7vw, 96px); }
+.feat { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(24px, 6vw, 90px); }
+.feat--flip .feat__text { order: 2; }
+.feat__text p:last-child { color: var(--dim); font-weight: 500; margin-top: 16px; max-width: 44ch; font-size: 1.125rem; }
+.feat__phone { position: relative; display: grid; place-items: center; padding: clamp(20px, 4vw, 48px) 0; }
+.feat__phone::before { content: ""; position: absolute; width: 78%; aspect-ratio: 1; border-radius: 50%; background: linear-gradient(135deg, var(--a), var(--b)); opacity: .22; filter: blur(50px); }
+.feat__phone .phone { position: relative; width: min(340px, 74%); transform: rotate(var(--tilt, -3deg)); transition: transform .9s var(--ease); }
+.feat--flip .feat__phone .phone { --tilt: 3deg; }
+.feat__phone:hover .phone { transform: rotate(0deg) translateY(-8px); }
+
+/* themes */
+.themes { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(24px, 6vw, 90px); }
+.themes__phones { position: relative; height: clamp(420px, 46vw, 600px); }
+.themes__phones .phone { position: absolute; width: 46%; top: 0; left: 6%; }
+.themes__phones .phone + .phone { top: 14%; left: 48%; }
+
+/* comparison */
+.compare { padding: clamp(22px, 4vw, 44px); margin-top: 40px; }
+.compare table { width: 100%; border-collapse: collapse; }
+.compare th, .compare td { text-align: left; padding: 16px 12px; border-bottom: 1px solid rgba(15, 23, 42, .08); vertical-align: middle; }
+.compare thead th { font-size: .875rem; color: var(--dim); font-weight: 700; }
+.compare tbody th { font-weight: 700; }
+.compare td { font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.compare td:nth-child(2) { color: var(--green); }
+.compare td:nth-child(3) { color: var(--dim); }
+.compare tr:last-child th, .compare tr:last-child td { border-bottom: 0; }
+.yes { display: inline-flex; align-items: center; gap: 8px; }
+.yes::before { content: ""; width: 22px; height: 22px; border-radius: 50%; background: var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5 9-10'/%3E%3C/svg%3E") center / 13px no-repeat; flex: none; }
+.fine { font-size: .8125rem; color: var(--faint); font-weight: 600; margin-top: 18px; max-width: 80ch; }
+
+/* price */
+.plans { display: grid; grid-template-columns: 1fr 1.25fr; gap: 18px; margin-top: 40px; align-items: stretch; }
+.plan { padding: clamp(24px, 3vw, 36px); display: flex; flex-direction: column; gap: 18px; }
+.plan h3 { font-size: 1.5rem; }
+.plan ul { list-style: none; padding: 0; display: grid; gap: 12px; font-weight: 600; }
+.plan li { display: flex; gap: 12px; align-items: flex-start; }
+.plan li::before { content: ""; width: 22px; height: 22px; margin-top: 2px; border-radius: 50%; background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5 9-10'/%3E%3C/svg%3E") center / 13px no-repeat; flex: none; }
+.plan .btn { margin-top: auto; }
+.plan--pro { background: linear-gradient(135deg, #0F172A, #26324F); color: #fff; border-color: rgba(255, 255, 255, .14); }
+.plan--pro li::before { background-color: #5E78FF; }
+.prices { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: auto; }
+.prices div { padding: 14px 10px; border-radius: 18px; background: rgba(255, 255, 255, .1); text-align: center; }
+.prices b { display: block; font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; }
+.prices span { font-size: .8125rem; font-weight: 600; color: #C9D1E6; }
+.plan__fine { font-size: .8125rem; color: #C9D1E6; font-weight: 600; }
+
+/* questions */
+.faq { display: grid; gap: 10px; margin-top: 40px; max-width: 860px; margin-inline: auto; }
+.qa { background: var(--glass); border: 1px solid var(--glass-edge); border-radius: 22px; box-shadow: var(--shadow); -webkit-backdrop-filter: blur(22px); backdrop-filter: blur(22px); }
+.qa summary { list-style: none; cursor: pointer; padding: 20px 56px 20px 22px; font-weight: 700; position: relative; border-radius: 22px; }
+.qa summary::-webkit-details-marker { display: none; }
+.qa summary::after { content: ""; position: absolute; right: 22px; top: 50%; width: 12px; height: 12px; margin-top: -9px; border-right: 3px solid var(--accent); border-bottom: 3px solid var(--accent); border-radius: 2px; transform: rotate(45deg); transition: transform .35s var(--ease); }
+.qa[open] summary::after { transform: rotate(225deg) translate(-4px, -4px); }
+.qa p { padding: 0 22px 22px; color: var(--dim); font-weight: 500; }
+
+/* privacy */
+.policy { padding: clamp(22px, 4vw, 44px); max-width: 860px; margin: 40px auto 0; font-size: 1rem; }
+.policy h3 { font-size: 1.125rem; letter-spacing: -0.01em; margin: 28px 0 8px; }
+.policy p, .policy ul { margin-bottom: 14px; color: #3A4358; }
+.policy ul { padding-left: 1.2em; } .policy li { margin-bottom: 6px; }
+.policy a { color: var(--accent); font-weight: 600; }
+
+/* close */
+.cta { padding: clamp(36px, 6vw, 72px) clamp(22px, 5vw, 64px); display: grid; grid-template-columns: 1.2fr auto; gap: 28px; align-items: center; background: var(--grad); color: #fff; border-color: rgba(255, 255, 255, .25); }
+.cta .btn { background: #fff; color: var(--accent); box-shadow: 0 16px 36px -14px rgba(15, 23, 42, .5); }
+.cta p { color: #E6EAFF; font-weight: 500; margin-top: 12px; max-width: 44ch; }
+footer { width: var(--w); margin: 64px auto 40px; display: flex; flex-wrap: wrap; gap: 10px 28px; align-items: center; color: var(--dim); font-size: .875rem; font-weight: 600; }
+footer p { margin-right: auto; max-width: 62ch; }
+footer a { padding: 8px 0; }
+
+@media (max-width: 860px) {
+  .hero, .try, .feat, .themes, .plans, .cta { grid-template-columns: 1fr; }
+  .hero { text-align: center; } .hero .lede { margin-inline: auto; } .hero__cta { justify-content: center; }
+  .hero__phones { height: 118vw; max-height: 620px; }
+  .hero__phones .phone { width: 52%; max-width: 262px; } .hero__phones .p2, .hero__phones .p3 { width: 44%; max-width: 222px; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .feat--flip .feat__text { order: 0; }
+  .feat__text { text-align: center; } .feat__text p:last-child { margin-inline: auto; }
+  .themes__phones { height: 124vw; max-height: 620px; max-width: 520px; margin-inline: auto; width: 100%; }
+  .themes__phones .phone { max-width: 240px; }
+  .themes { text-align: center; } .themes .lede { margin-inline: auto; }
+  .compare th, .compare td { padding: 14px 6px; font-size: .9375rem; } .compare td { white-space: normal; }
+  .prices { grid-template-columns: 1fr 1fr; }
+  .cta { text-align: center; } .cta p { margin-inline: auto; }
+  footer { justify-content: center; text-align: center; } footer p { margin: 0 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .backdrop i, .hero__phones .phone { animation: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .btn, .feat__phone .phone, .answer dd { transition: none; }
+}
+</style>
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<div class="backdrop" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<header class="nav glass">
+  <a class="nav__mark" href="#top"><img src="img/icon.jpg" width="36" height="36" alt=""><span>Naturalization Prep</span></a>
+  <a class="link" href="#app">The app</a>
+  <a class="link" href="#compare">Compared</a>
+  <a class="link" href="#price">Price</a>
+  <a class="link" href="#questions">Questions</a>
+  <a class="link" href="#privacy">Privacy</a>
+  <a class="btn" href="{{STORE}}">Get the app</a>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <p class="pill glass reveal">All 128 official USCIS questions · 8 languages</p>
+      <h1 class="reveal" style="--d:1"><span>Walk into your interview</span> <span class="grad">ready</span></h1>
+      <p class="lede reveal" style="--d:2">The naturalization civics test on your iPhone, asked the way the officer asks it: out loud, one question at a time, 12 right to pass.</p>
+      <p class="hero__cta reveal" style="--d:3">
+        <a class="btn" href="{{STORE}}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.54c-.03-2.7 2.2-4 2.3-4.06-1.25-1.83-3.2-2.08-3.9-2.11-1.66-.17-3.24.98-4.08.98-.84 0-2.14-.96-3.52-.93-1.81.03-3.48 1.05-4.41 2.67-1.88 3.26-.48 8.08 1.35 10.73.9 1.3 1.96 2.75 3.36 2.7 1.35-.05 1.86-.87 3.49-.87 1.63 0 2.09.87 3.52.84 1.45-.03 2.37-1.32 3.26-2.62 1.03-1.5 1.45-2.96 1.48-3.03-.03-.02-2.83-1.09-2.85-4.3zM14.37 4.6c.74-.9 1.24-2.14 1.1-3.38-1.07.04-2.36.71-3.12 1.6-.69.8-1.29 2.07-1.13 3.29 1.19.09 2.4-.6 3.15-1.51z"/></svg>Download on the App Store</a>
+        <a class="btn btn--quiet" href="#app">See the app</a>
+      </p>
+    </div>
+    <div class="hero__phones reveal" style="--d:2">
+      <div class="phone p2"><img src="img/app-exam.jpg" width="660" height="1434" alt="The exam simulator on question 1 of 20"></div>
+      <div class="phone p3"><img src="img/app-cards.jpg" width="660" height="1434" alt="A flashcard with a history question"></div>
+      <div class="phone p1"><img src="img/app-home.jpg" width="660" height="1434" alt="The app's home screen: 77 percent ready, 99 of 128 questions learned"></div>
+    </div>
+  </div>
+
+  <div class="wrap stats">
+    <div class="stat glass reveal"><b class="grad" data-count="128">128</b><span>official civics questions</span></div>
+    <div class="stat glass reveal" style="--d:1"><b class="grad" data-count="12">12</b><span>right answers to pass, of up to 20</span></div>
+    <div class="stat glass reveal" style="--d:2"><b class="grad" data-count="8">8</b><span>languages for questions and answers</span></div>
+    <div class="stat glass reveal" style="--d:3"><b class="grad" data-count="50">50</b><span>states with current officials, updated daily</span></div>
+  </div>
+
+  <section class="wrap try" aria-labelledby="h-try">
+    <div>
+      <h2 id="h-try" class="reveal">Some answers depend on <span class="grad">your state</span></h2>
+      <p class="lede mt reveal" style="--d:1">Governors and senators change after every election. The app checks for new names every day, so you never learn an old one. Try it: this card reads the same file the app does.</p>
+    </div>
+    <form class="live glass reveal" style="--d:2" id="live" aria-labelledby="live-q">
+      <p class="live__from"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5z"/></svg></i>Officer asks</p>
+      <p class="live__q" id="live-q">Who is the governor of your state now?</p>
+      <label for="state">Choose your state</label>
+      <select id="state" name="state"><option value="CA">California</option></select>
+      <dl class="answer" aria-live="polite">
+        <div><dt>Governor</dt><dd id="gov">Gavin Newsom</dd></div>
+        <div><dt>U.S. senators</dt><dd id="sen">Alex Padilla, Adam Schiff</dd></div>
+      </dl>
+      <p class="live__note" id="live-note">Checked against senate.gov and nga.org.</p>
+    </form>
+  </section>
+
+  <section id="app" aria-labelledby="h-app">
+    <div class="wrap center">
+      <h2 id="h-app" class="reveal">Five ways to <span class="grad">get ready</span></h2>
+      <p class="lede mt reveal" style="--d:1">Every screen below is the real app.</p>
+    </div>
+    <div class="wrap feats">
+{{FEATURES}}
+    </div>
+  </section>
+
+  <section class="wrap themes" aria-labelledby="h-themes">
+    <div class="themes__phones reveal">
+      <div class="phone"><img src="img/app-home.jpg" width="660" height="1434" alt="The home screen in light mode" loading="lazy"></div>
+      <div class="phone"><img src="img/app-home-dark.jpg" width="660" height="1434" alt="The home screen in dark mode" loading="lazy"></div>
+    </div>
+    <div>
+      <h2 id="h-themes" class="reveal">Light or dark, <span class="grad">your choice</span></h2>
+      <p class="lede mt reveal" style="--d:1">Follows your iPhone or stays the way you set it. Larger text, VoiceOver and landscape all work.</p>
+    </div>
+  </section>
+
+  <section class="wrap" id="compare" aria-labelledby="h-compare">
+    <div class="center">
+      <h2 id="h-compare" class="reveal">How it <span class="grad">compares</span></h2>
+      <p class="lede mt reveal" style="--d:1">We read the App Store descriptions of eight widely rated citizenship test apps and counted how many mention each thing this app does.</p>
+    </div>
+    <div class="compare glass reveal" style="--d:2">
+      <table>
+        <thead><tr><th scope="col">What you may need</th><th scope="col">This app</th><th scope="col">The eight others</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">The 2025 test with 128 questions</th><td><span class="yes">Yes</span></td><td>4 of 8</td></tr>
+          <tr><th scope="row">The 65/20 test for older applicants</th><td><span class="yes">Yes</span></td><td>0 of 8</td></tr>
+          <tr><th scope="row">Your state's governor and senators</th><td><span class="yes">Updated daily</span></td><td>4 of 8</td></tr>
+          <tr><th scope="row">Answering out loud to a spoken question</th><td><span class="yes">Yes</span></td><td>2 of 8</td></tr>
+          <tr><th scope="row">English reading and writing practice</th><td><span class="yes">Yes</span></td><td>2 of 8</td></tr>
+          <tr><th scope="row">Questions in other languages</th><td><span class="yes">8 languages</span></td><td>3 of 8</td></tr>
+        </tbody>
+      </table>
+      <p class="fine">How we counted: the eight most-rated apps found for “US citizenship test”, “naturalization test 2025” and “civics test USCIS” on the U.S. App Store on November 18, 2026. An app may do something its description leaves out, so read this as what each listing promises. Several of those apps have far more ratings than ours; we are newer.</p>
+    </div>
+  </section>
+
+  <section class="wrap" id="price" aria-labelledby="h-price">
+    <div class="center">
+      <h2 id="h-price" class="reveal">Free to start, <span class="grad">Pro for the full test</span></h2>
+      <p class="lede mt reveal" style="--d:1">Your first day includes every Pro tool, with no purchase.</p>
+    </div>
+    <div class="plans">
+      <div class="plan glass reveal">
+        <h3>Free</h3>
+        <ul>
+          <li>Flashcards for all 128 questions</li>
+          <li>One 10-question practice test a day</li>
+          <li>Questions and answers in 8 languages</li>
+          <li>One more test for a short video ad</li>
+        </ul>
+        <a class="btn btn--quiet" href="{{STORE}}">Download free</a>
+      </div>
+      <div class="plan plan--pro glass reveal" style="--d:1">
+        <h3>Pro</h3>
+        <ul>
+          <li>The exam simulator, in the real format</li>
+          <li>Unlimited practice tests</li>
+          <li>Audio Interview and recorded voices</li>
+          <li>English reading and writing test</li>
+          <li>Your state's answers</li>
+          <li>No ads</li>
+        </ul>
+        <div class="prices">
+          <div><b>$2.99</b><span>a week</span></div>
+          <div><b>$5.99</b><span>a month</span></div>
+          <div><b>$19.99</b><span>a year</span></div>
+          <div><b>$29.99</b><span>for life</span></div>
+        </div>
+        <p class="plan__fine">U.S. prices. The app shows yours. Subscriptions renew until cancelled.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="questions" aria-labelledby="h-faq">
+    <div class="center"><h2 id="h-faq" class="reveal">Questions and <span class="grad">answers</span></h2></div>
+    <div class="faq">
+{{FAQ}}
+    </div>
+  </section>
+
+  <section class="wrap" id="privacy" aria-labelledby="h-privacy">
+    <div class="center"><h2 id="h-privacy" class="reveal">Privacy policy</h2></div>
+    <div class="policy glass reveal">
+{{PRIVACY}}
+      <p><a href="privacy.html">Open the privacy policy on its own page</a></p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="cta glass reveal">
+      <div>
+        <h2>Start tonight</h2>
+        <p>Ten questions take about five minutes. Study the 128 until any twenty feel easy.</p>
+      </div>
+      <a class="btn" href="{{STORE}}">Download on the App Store</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Essential Dev Team. An independent study aid, not affiliated with or endorsed by USCIS or any government agency. USCIS civics questions are in the public domain.</p>
+  <a href="mailto:essentialdevteam@gmail.com?subject=Naturalization%20Prep%20question">essentialdevteam@gmail.com</a>
+  <a href="privacy.html">Privacy</a>
+  <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms</a>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // scroll entrances
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }, { rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  setTimeout(() => document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in")), 5000); // never leave content hidden
+
+  // numbers count up once
+  const counter = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      counter.unobserve(e.target);
+      const end = +e.target.dataset.count; if (reduce) continue;
+      const t0 = performance.now();
+      const tick = (t) => { const p = Math.min(1, (t - t0) / 1100); e.target.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(tick); };
+      requestAnimationFrame(tick);
+    }
+  });
+  document.querySelectorAll("[data-count]").forEach((el) => counter.observe(el));
+
+  // the live card: answered from the app's own officials file
+  const NAMES = {AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",CO:"Colorado",CT:"Connecticut",DE:"Delaware",FL:"Florida",GA:"Georgia",HI:"Hawaii",ID:"Idaho",IL:"Illinois",IN:"Indiana",IA:"Iowa",KS:"Kansas",KY:"Kentucky",LA:"Louisiana",ME:"Maine",MD:"Maryland",MA:"Massachusetts",MI:"Michigan",MN:"Minnesota",MS:"Mississippi",MO:"Missouri",MT:"Montana",NE:"Nebraska",NV:"Nevada",NH:"New Hampshire",NJ:"New Jersey",NM:"New Mexico",NY:"New York",NC:"North Carolina",ND:"North Dakota",OH:"Ohio",OK:"Oklahoma",OR:"Oregon",PA:"Pennsylvania",RI:"Rhode Island",SC:"South Carolina",SD:"South Dakota",TN:"Tennessee",TX:"Texas",UT:"Utah",VT:"Vermont",VA:"Virginia",WA:"Washington",WV:"West Virginia",WI:"Wisconsin",WY:"Wyoming"};
+  const live = document.getElementById("live"), sel = document.getElementById("state");
+  fetch("officials.json").then((r) => r.json()).then((data) => {
+    const by = Object.fromEntries(data.states.map((s) => [s.code, s]));
+    sel.innerHTML = Object.keys(NAMES).filter((c) => by[c]).map((c) => `<option value="${c}">${NAMES[c]}</option>`).join("");
+    sel.value = "CA";
+    sel.addEventListener("change", () => {
+      const s = by[sel.value]; if (!s) return;
+      live.classList.add("swap");
+      setTimeout(() => {
+        document.getElementById("gov").textContent = s.governor;
+        document.getElementById("sen").textContent = s.senators.join(", ");
+        live.classList.remove("swap");
+      }, reduce ? 0 : 200);
+    });
+    document.getElementById("live-note").textContent = `Last updated ${new Date(data.updated + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}. Checked against senate.gov and nga.org.`;
+  }).catch(() => {});
+})();
+</script>
+</body>
+</html>
