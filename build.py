@@ -42,7 +42,7 @@ features = "\n".join(
       </article>''' for i, (tag, title, text, img, alt, c1, c2) in enumerate(FEATURES))
 
 FAQ = [
-    ("Are the questions up to date?", "Yes. The app uses the current USCIS civics test, all 128 questions, the version given in 2026 and 2027. Answers that change (the President, the Speaker, your governor and senators) are refreshed from a public file once a day when you are online, so an election never leaves you with an old name."),
+    ("Are the questions up to date?", "Yes. The app uses the current USCIS civics test, all 128 questions, the version in use today. Answers that change (the President, the Speaker, your governor and senators) are refreshed from a public file once a day when you are online, so an election never leaves you with an old name."),
     ("Is this the 100-question test or the 128-question test?", "The 128-question test. People who filed Form N-400 on or after October 20, 2025 take it: up to 20 questions, 12 correct to pass. If you filed earlier you take the 2008 test with 100 questions, which this app does not cover."),
     ("What is 65/20 mode?", "If you are 65 or older and have been a permanent resident for 20 years or more, you study 20 marked questions and are asked 10; 6 correct is a pass. Turn it on in Settings (the gear, top right) and every test follows those rules."),
     ("How do I change my state?", "Open Settings with the gear at the top right and choose Current State. Your governor, senators and capital change at once."),
